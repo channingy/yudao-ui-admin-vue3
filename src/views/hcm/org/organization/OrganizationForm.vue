@@ -20,10 +20,24 @@
         <el-input v-model="formData.englishName" placeholder="请输入组织英文名" />
       </el-form-item>
       <el-form-item label="组织层级" prop="level">
-        <el-input v-model="formData.level" placeholder="请输入组织层级" />
+        <el-select v-model="formData.status" clearable placeholder="请选择组织层级">
+          <el-option
+            v-for="dict in getIntDictOptions(DICT_TYPE.HCM_ORG_LEVEL)"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item label="组织类别" prop="category">
-        <el-input v-model="formData.category" placeholder="请输入组织类别" />
+        <el-select v-model="formData.status" clearable placeholder="请输入组织类别">
+          <el-option
+            v-for="dict in getIntDictOptions(DICT_TYPE.HCM_ORG_CATAGROY)"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item label="生效日期" prop="estDate">
         <el-date-picker
@@ -42,9 +56,14 @@
         />
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <el-radio-group v-model="formData.status">
-          <el-radio value="1">请选择字典生成</el-radio>
-        </el-radio-group>
+        <el-select v-model="formData.status" clearable placeholder="请选择状态">
+          <el-option
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item label="负责人" prop="leader">
         <el-input v-model="formData.leader" placeholder="请输入负责人" />
@@ -70,6 +89,7 @@
   </Dialog>
 </template>
 <script setup lang="ts">
+import { DICT_TYPE, getIntDictOptions } from '@/utils/dict'
 import { OrganizationApi, OrganizationVO } from '@/api/hcm/organization'
 import { defaultProps, handleTree } from '@/utils/tree'
 

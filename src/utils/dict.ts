@@ -239,5 +239,9 @@ export enum DICT_TYPE {
   IOT_PRODUCT_FUNCTION_TYPE = 'iot_product_function_type', // IOT 产品功能类型
   IOT_DATA_TYPE = 'iot_data_type', // IOT 数据类型
   IOT_UNIT_TYPE = 'iot_unit_type', // IOT 单位类型
-  IOT_RW_TYPE = 'iot_rw_type' // IOT 读写类型
+  IOT_RW_TYPE = 'iot_rw_type', // IOT 读写类型
+
+  // ========== HCM - 人力资源模块  ==========
+  HCM_ORG_LEVEL = 'hcm_org_level', // 组织层级
+  HCM_ORG_CATAGROY = 'hcm_org_category' // 组织类别
 }
