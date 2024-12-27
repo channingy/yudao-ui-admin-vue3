@@ -45,22 +45,34 @@
         />
       </el-form-item>
       <el-form-item label="组织层级" prop="level">
-        <el-input
-          v-model="queryParams.level"
-          placeholder="请输入组织层级"
+        <el-select
+          v-model="queryParams.status"
+          placeholder="请选择组织层级"
           clearable
-          @keyup.enter="handleQuery"
           class="!w-240px"
-        />
+        >
+          <el-option
+            v-for="dict in getIntDictOptions(DICT_TYPE.HCM_ORG_LEVEL)"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item label="组织类别" prop="category">
-        <el-input
-          v-model="queryParams.category"
-          placeholder="请输入组织类别"
+        <el-select
+          v-model="queryParams.status"
+          placeholder="请选择组织类别"
           clearable
-          @keyup.enter="handleQuery"
           class="!w-240px"
-        />
+        >
+          <el-option
+            v-for="dict in getIntDictOptions(DICT_TYPE.HCM_ORG_CATAGROY)"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item label="生效日期" prop="estDate">
         <el-date-picker
@@ -165,7 +177,7 @@
       :default-expand-all="isExpandAll"
       v-if="refreshTable"
     >
-      <el-table-column label="编号" align="center" prop="id" />
+      <!-- <el-table-column label="编号" align="center" prop="id" />-->
       <el-table-column label="组织编码" align="center" prop="code" />
       <el-table-column label="组织简称" align="center" prop="shortName" />
       <el-table-column label="组织全称" align="center" prop="fullName" />
@@ -232,6 +244,7 @@
 </template>
 
 <script setup lang="ts">
+import { DICT_TYPE, getIntDictOptions } from '@/utils/dict'
 import { dateFormatter } from '@/utils/formatTime'
 import { handleTree } from '@/utils/tree'
 import download from '@/utils/download'
