@@ -246,6 +246,7 @@ const { t } = useI18n() // 国际化
 
 const loading = ref(true) // 列表的加载中
 const list = ref<OrganizationVO[]>([]) // 列表的数据
+const total = ref(0) // 总条数
 const queryParams = reactive({
   code: undefined,
   shortName: undefined,
@@ -259,7 +260,9 @@ const queryParams = reactive({
   leader: undefined,
   leaderEmpNo: undefined,
   parentId: undefined,
-  createTime: []
+  createTime: [],
+  pageNo: 1,
+  pageSize: 10
 })
 const queryFormRef = ref() // 搜索的表单
 const exportLoading = ref(false) // 导出的加载中
