@@ -20,7 +20,7 @@
         <el-input v-model="formData.englishName" placeholder="请输入组织英文名" />
       </el-form-item>
       <el-form-item label="组织层级" prop="level">
-        <el-select v-model="formData.status" clearable placeholder="请选择组织层级">
+        <el-select v-model="formData.level" clearable placeholder="请选择组织层级">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.HCM_ORG_LEVEL)"
             :key="dict.value"
@@ -30,7 +30,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="组织类别" prop="category">
-        <el-select v-model="formData.status" clearable placeholder="请输入组织类别">
+        <el-select v-model="formData.category" clearable placeholder="请输入组织类别">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.HCM_ORG_CATAGROY)"
             :key="dict.value"

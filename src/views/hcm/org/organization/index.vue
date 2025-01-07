@@ -182,8 +182,18 @@
       <el-table-column label="组织简称" align="center" prop="shortName" />
       <el-table-column label="组织全称" align="center" prop="fullName" />
       <el-table-column label="组织英文名" align="center" prop="englishName" />
-      <el-table-column label="组织层级" align="center" prop="level" />
-      <el-table-column label="组织类别" align="center" prop="category" />
+      <el-table-column
+        label="组织层级"
+        align="center"
+        prop="level"
+        :formatter="(row) => getDictLabel(DICT_TYPE.HCM_ORG_LEVEL, row.level)"
+      />
+      <el-table-column
+        label="组织类别"
+        align="center"
+        prop="category"
+        :formatter="(row) => getDictLabel(DICT_TYPE.HCM_ORG_CATAGROY, row.category)"
+      />
       <el-table-column
         label="生效日期"
         align="center"
@@ -244,7 +254,7 @@
 </template>
 
 <script setup lang="ts">
-import { DICT_TYPE, getIntDictOptions } from '@/utils/dict'
+import { DICT_TYPE, getIntDictOptions, getDictLabel } from '@/utils/dict'
 import { dateFormatter } from '@/utils/formatTime'
 import { handleTree } from '@/utils/tree'
 import download from '@/utils/download'
