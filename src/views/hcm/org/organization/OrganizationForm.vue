@@ -32,7 +32,7 @@
       <el-form-item label="组织类别" prop="category">
         <el-select v-model="formData.category" clearable placeholder="请输入组织类别">
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.HCM_ORG_CATAGROY)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.HCM_ORG_CATEGORY)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"

@@ -67,7 +67,7 @@
           class="!w-240px"
         >
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.HCM_ORG_CATAGROY)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.HCM_ORG_CATEGORY)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -178,21 +178,23 @@
       v-if="refreshTable"
     >
       <!-- <el-table-column label="编号" align="center" prop="id" />-->
-      <el-table-column label="组织编码" align="center" prop="code" />
-      <el-table-column label="组织简称" align="center" prop="shortName" />
-      <el-table-column label="组织全称" align="center" prop="fullName" />
-      <el-table-column label="组织英文名" align="center" prop="englishName" />
+      <el-table-column label="组织编码" align="center" prop="code" width="150" />
+      <el-table-column label="组织简称" align="center" prop="shortName" width="140" />
+      <el-table-column label="组织全称" align="center" prop="fullName" width="180" />
+      <el-table-column label="组织英文名" align="center" prop="englishName" width="160" />
       <el-table-column
         label="组织层级"
         align="center"
         prop="level"
+        width="120"
         :formatter="(row) => getDictLabel(DICT_TYPE.HCM_ORG_LEVEL, row.level)"
       />
       <el-table-column
         label="组织类别"
         align="center"
         prop="category"
-        :formatter="(row) => getDictLabel(DICT_TYPE.HCM_ORG_CATAGROY, row.category)"
+        width="120"
+        :formatter="(row) => getDictLabel(DICT_TYPE.HCM_ORG_CATEGORY, row.category)"
       />
       <el-table-column
         label="生效日期"
@@ -210,7 +212,7 @@
       />
       <el-table-column label="状态" align="center" prop="status" />
       <el-table-column label="负责人" align="center" prop="leader" />
-      <el-table-column label="负责人工号" align="center" prop="leaderEmpNo" />
+      <el-table-column label="负责人工号" align="center" prop="leaderEmpNo" width="140"/>
       <el-table-column label="父级编号" align="center" prop="parentId" />
       <el-table-column
         label="创建时间"
