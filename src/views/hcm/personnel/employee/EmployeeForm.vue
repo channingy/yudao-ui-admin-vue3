@@ -36,7 +36,14 @@
         />
       </el-form-item>
       <el-form-item label="公司" prop="company">
-        <el-input v-model="formData.company" placeholder="请输入公司" />
+        <el-select v-model="formData.company" placeholder="请选择公司">
+          <el-option
+            v-for="item in companyList"
+            :key="item.id"
+            :label="item.shortName"
+            :value="item.code"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item label="末级组织" prop="orgUnit">
         <el-input v-model="formData.orgUnit" placeholder="请输入末级组织" />
@@ -288,6 +295,7 @@
 import { DICT_TYPE, getIntDictOptions, getStrDictOptions } from '@/utils/dict'
 import { EmployeeApi, EmployeeVO } from '@/api/hcm/employee'
 import { PositionApi } from '@/api/hcm/position'
+import { OrganizationApi } from '@/api/hcm/organization'
 
 /** 员工 表单 */
 defineOptions({ name: 'EmployeeForm' })
@@ -381,14 +389,23 @@ const getPositionList = async () => {
   positionList.value = res
 }
 
+/** 添加公司列表状态 */
+const companyList = ref([])
+
+/** 获取公司列表 */
+const getCompanyList = async () => {
+  const res = await OrganizationApi.getCompanyList()
+  companyList.value = res
+}
+
 /** 打开弹窗 */
 const open = async (type: string, id?: number) => {
   dialogVisible.value = true
   dialogTitle.value = t('action.' + type)
   formType.value = type
   resetForm()
-  // 获取职务列表
-  await getPositionList()
+  // 获取职务列表和公司列表
+  await Promise.all([getPositionList(), getCompanyList()])
   // 修改时，设置数据
   if (id) {
     formLoading.value = true

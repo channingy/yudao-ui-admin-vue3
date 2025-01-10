@@ -47,5 +47,10 @@ export const OrganizationApi = {
   // 导出组织 Excel
   exportOrganization: async (params) => {
     return await request.download({ url: `/hcm/organization/export-excel`, params })
+  },
+
+  // 获取公司列表
+  getCompanyList: async () => {
+    return await request.get({ url: '/hcm/organization/company-list' })
   }
 }

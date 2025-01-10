@@ -145,6 +145,8 @@ const open = async (type: string, id?: number) => {
     formLoading.value = true
     try {
       formData.value = await OrganizationApi.getOrganization(id)
+      // 将组织类别的值转换为对应的标签
+      formData.value.category = parseInt(formData.value.category)
     } finally {
       formLoading.value = false
     }
