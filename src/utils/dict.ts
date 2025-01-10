@@ -242,6 +242,14 @@ export enum DICT_TYPE {
   IOT_RW_TYPE = 'iot_rw_type', // IOT 读写类型
 
   // ========== HCM - 人力资源模块  ==========
-  HCM_ORG_LEVEL = 'hcm_org_level', // 组织层级
-  HCM_ORG_CATAGROY = 'hcm_org_category' // 组织类别
+// ========== HCM - 人力资源模块  ==========
+HCM_ORG_LEVEL = 'hcm_org_level', // 组织层级
+HCM_ORG_CATEGORY = 'hcm_org_category', // 组织类别
+HCM_ID_TYPE = 'hcm_id_type', // 证件类型
+HCM_GENDER = 'hcm_gender', // 性别
+HCM_NATIONALITY = 'hcm_nationality', // 国籍
+HCM_ETHNICITY = 'hcm_ethnicity', // 民族
+HCM_STAFFING_STATUS = 'hcm_staffing_status', // 编制情况
+HCM_EMPLOYEE_CATEGORY = 'hcm_employee_category', // 员工类别
+HCM_EMPLOYEE_STATUS = 'hcm_employee_status' // 员工状态
 }

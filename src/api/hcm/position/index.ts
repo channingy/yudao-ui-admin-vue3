@@ -40,5 +40,10 @@ export const PositionApi = {
   // 导出职务信息 Excel
   exportPosition: async (params) => {
     return await request.download({ url: `/hcm/position/export-excel`, params })
+  },
+
+  // 获取职务精简信息列表
+  getPositionSimpleList: async () => {
+    return await request.get({ url: '/hcm/position/simple-list' })
   }
 }
